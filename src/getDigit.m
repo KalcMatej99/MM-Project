@@ -10,7 +10,7 @@ function predicted_digit = getDigit(A, b)
     Ui(1:rows(Ui_), 1:columns(Ui_)) = Ui_;
     size(Ui)
     size(Si)
-    yi = (Ui * Si') \ b
+    yi = (Ui * Si') \ b;
     error = norm(Ui' * b - Si' * yi);
     
     if error < min_error
