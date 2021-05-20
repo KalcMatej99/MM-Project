@@ -1,7 +1,4 @@
-function CA = predictTestData(data, testData, useSVD = false)
-
-  %data(1).structToSave.u
-
+function CA = predictTestData(data, testData, useSVD = true)
   number_of_images_in_test_data = rows(testData)
 
   number_of_correct_predictions = 0;
