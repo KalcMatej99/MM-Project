@@ -12,9 +12,11 @@ function saveSVDofA(pathToData = "./../data/dataMatrixWithLabelsNearest.csv", pa
   numberOfImagesForEachDigitInTrainData = [0,0,0,0,0,0,0,0,0,0];
   testData = [];
   
+  trainTestSplit = 0.85;
+  
   for i = 1:number_of_rows
     real_digit = data(i, 1);
-    if(numberOfImagesForEachDigitInTrainData(real_digit + 1) < floor(numberOfImagesForEachDigit(real_digit + 1)*0.7))
+    if(numberOfImagesForEachDigitInTrainData(real_digit + 1) < floor(numberOfImagesForEachDigit(real_digit + 1)*trainTestSplit))
       numberOfImagesForEachDigitInTrainData(real_digit + 1) += 1;
       data_row = data(i, :);
 

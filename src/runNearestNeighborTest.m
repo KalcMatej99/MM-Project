@@ -1,1 +1,1 @@
-function runNearestNeighborTest()  transformNearestResizedGrayImagesToBigMatrixCSV();  saveSVDofA();  digits();
+function runNearestNeighborTest()    disp("No centering and normalization");  transformRGBImagesToGrayImages("nearest", false);  transformNearestResizedGrayImagesToBigMatrixCSV();  saveSVDofA();  digits();    disp("With centering and normalization");  transformRGBImagesToGrayImages("nearest", true);  transformNearestResizedGrayImagesToBigMatrixCSV();  saveSVDofA();  digits();

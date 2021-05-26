@@ -4,6 +4,15 @@ function digits(pathTrainData = './../data/svdMatricesNearest/', pathTestData = 
     data = [data, [load(strcat(pathTrainData, num2str(digit), '.mat'))]];
   endfor
   testData = dlmread(pathTestData);
-  CA = predictTestData(data, testData);
-  disp("Classification accuracy:");
-  disp(CA);
+  
+  CA_MP = predictTestData(data, testData, false);
+  CA_SVD = [];
+  for k = 1:columns(data(1).structToSave.s)
+    CA_SVD = [CA_SVD, predictTestData(data, testData, true, k)];
+  end
+  disp("Classification accuracy for MP:");
+  disp(CA_MP);
+  disp("Classification accuracy for SVD:");
+  disp(CA_SVD);
+  
+  plot(CA_SVD);

@@ -1,5 +1,5 @@
-function CA = predictTestData(data, testData, useSVD = true)
-  number_of_images_in_test_data = rows(testData)
+function CA = predictTestData(data, testData, useSVD = true, k = 1)
+  number_of_images_in_test_data = rows(testData);
 
   number_of_correct_predictions = 0;
   
@@ -11,7 +11,8 @@ function CA = predictTestData(data, testData, useSVD = true)
     for(digit = 0:9)
       if(useSVD)
         Ui = data(digit + 1).structToSave.u;
-        Si = data(digit + 1).structToSave.s;
+        Si = zeros(size(data(digit + 1).structToSave.s));
+        Si(:, 1:k) = data(digit + 1).structToSave.s(:, 1:k);
         error = digitErrorSVD(Ui, Si, test_image');
       else
         A = data(digit + 1).structToSave.a;
@@ -26,7 +27,7 @@ function CA = predictTestData(data, testData, useSVD = true)
     if(real_digit == predicted_digit)
       number_of_correct_predictions += 1;
     endif
-    disp(strcat("Real digit:", mat2str(real_digit), " Predicted digit:", mat2str(predicted_digit)));
+    %disp(strcat("Real digit:", mat2str(real_digit), " Predicted digit:", mat2str(predicted_digit)));
     
   endfor
   CA = number_of_correct_predictions/number_of_images_in_test_data;
