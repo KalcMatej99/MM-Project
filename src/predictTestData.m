@@ -3,6 +3,7 @@ function CA = predictTestData(data, testData, useSVD = true, k = 1)
 
   number_of_correct_predictions = 0;
   
+  
   for i = 1:number_of_images_in_test_data
     real_digit = testData(i, 1);
     test_image = testData(i, 2:end);
@@ -27,7 +28,6 @@ function CA = predictTestData(data, testData, useSVD = true, k = 1)
     if(real_digit == predicted_digit)
       number_of_correct_predictions += 1;
     endif
-    %disp(strcat("Real digit:", mat2str(real_digit), " Predicted digit:", mat2str(predicted_digit)));
     
   endfor
   CA = number_of_correct_predictions/number_of_images_in_test_data;
