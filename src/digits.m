@@ -1,4 +1,4 @@
-function digits(pathTrainData = './../data/svdMatricesNearest/', pathTestData = "./../data/testNearest.csv")
+function [CA_MP, CA_SVD] = digits(pathTrainData = './../data/svdMatricesNearest/', pathTestData = "./../data/testNearest.csv")
   data = [];
   for digit = 0:9
     data = [data, [load(strcat(pathTrainData, num2str(digit), '.mat'))]];
@@ -13,6 +13,10 @@ function digits(pathTrainData = './../data/svdMatricesNearest/', pathTestData = 
   disp("Classification accuracy for MP:");
   disp(CA_MP);
   disp("Classification accuracy for SVD:");
-  disp(CA_SVD);
+  disp(max(CA_SVD));
   
+  figure
   plot(CA_SVD);
+  xlabel("k");
+  ylabel("CA");
+end
