@@ -17,7 +17,7 @@ function transformRGBImagesToGrayImages(resizeMethod = 'bilinear', useCenteringA
       dlmwrite(strcat('./../data/Slike Matej/Gray/', resizeMethod, '/', num2str(digit), '/', num2str(i), '.csv'), resized_gray_image, ",");
     endfor
   endfor
-  
+  %{
   for digit = 0:9
     filenames = ls(strcat('./../data/Slike Andraž/Color/', num2str(digit)));
     number_of_images = rows(filenames);
@@ -54,6 +54,4 @@ function transformRGBImagesToGrayImages(resizeMethod = 'bilinear', useCenteringA
       resized_gray_image = round(imresize(gray_image, [16,16], resizeMethod));
       dlmwrite(strcat('./../data/Slike Samo/Gray/', resizeMethod, '/', num2str(digit), '/', num2str(i), '.csv'), resized_gray_image, ",");
     endfor
-  endfor
-  
-  
+  endfor%}
