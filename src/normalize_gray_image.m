@@ -1,16 +1,15 @@
 function normalized_img = normalize_gray_image(img)
   img = double(img);
   img = img + 1;
-  maxValue = max(max(img))
+  maxValue = max(max(img));
   normalized_img = img * (256/maxValue);
   
   normalized_img = (256 - normalized_img);
-  maxValue = max(max(normalized_img))
+  maxValue = max(max(normalized_img));
   normalized_img = 256 - (normalized_img .* (255/maxValue));
   
-  maxValue = min(min(normalized_img))
   normalized_img = normalized_img - 1;
-  normalized_img = floor(normalized_img);
+  normalized_img = round(normalized_img);
   normalized_img(normalized_img > 255) = 255;
   normalized_img(normalized_img < 0) = 0;
   normalized_img = uint8(normalized_img);
